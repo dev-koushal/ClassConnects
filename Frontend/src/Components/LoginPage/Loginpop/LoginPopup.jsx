@@ -1,5 +1,8 @@
-import React from 'react'
+
+import React ,{lazy} from 'react'
 import {motion} from 'motion/react'
+import { Link } from 'react-router'
+const StudentBoard = lazy(() => import('../../StudentDash/StudentBoard'));
 function Loginpop({state}) {
 
 
@@ -25,11 +28,13 @@ function Loginpop({state}) {
             </div>
             <a href="#" className="ms-auto text-sm text-blue-700 hover:underline dark:text-blue-500">Lost Password?</a>
         </div>
-        <button type="submit" className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login to your account</button>
+        <button type="submit" className="w-full space-y-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login to your account</button>
         <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
-            Not registered? <a href="#" className="text-blue-700 hover:underline dark:text-blue-500">Create account</a>
+            Not registered? {' '}
+            <h1 className='blue hover:red'>fuck off not registered</h1>
         </div>
     </form>
+    <button className='w-full p-2 rounded-full bg-red-500 cursor-progress text-white'><Link to={'/studentdashboard'}>Do you wanna see my dash.. </Link></button>
 </motion.div>
 
     </>

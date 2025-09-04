@@ -26,6 +26,20 @@ const scheduledClasses = [
       time: "9:00 AM - 10:30 AM",
       date: "Yesterday",
       status: "completed",
+    },
+    {
+      id: 3,
+      topic: "Machine Learning Basics",
+      time: "11:00 AM - 12:30 PM",
+      date: "Tomorrow",
+      status: "scheduled",
+    },
+    {
+      id: 4,
+      topic: "Web Security Fundamentals",
+      time: "9:00 AM - 10:30 AM",
+      date: "Yesterday",
+      status: "completed",
     }
   ];
 
