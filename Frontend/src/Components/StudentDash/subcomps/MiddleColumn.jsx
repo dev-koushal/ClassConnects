@@ -12,15 +12,15 @@ function MiddleColumn({setSize,setSizeSchedule}) {
   }
   return (
     <div className="md:block hidden bg-white border-2 border-blue-700 rounded-4xl shadow-[1px_1px_25px_1px_gray] overflow-y-auto" style={{maxHeight:`${setSize}px`}}>
-              <div className="flex items-center mb-4 bg-white h-20 sticky top-0 shadow-lg">
+              <div className="flex items-center mb-4 bg-white h-20 sticky top-0 shadow-lg z-10">
                 <FileText className="w-5 h-5 text-green-600 mr-2 ml-6" />
                 <h2 className="text-xl font-semibold text-gray-900 bg-blue-900/40 cursor-pointer hover:bg-blue-900/70 p-2 rounded-full " onClick={()=>discussionSize()}>Uploaded Content</h2>
               </div>
               
               <div className="space-y-4  p-6 ">
                 {uploadedContent.map((content) => (
-                  <div key={content.id} className="border rounded-lg p-4 hover:shadow-md transition-shadow">
-                    <div className="flex justify-between items-start mb-2">
+                  <div key={content.id} className="border rounded-lg p-4 hover:shadow-xl shadow-black/40 hover:scale-[1.01] transition-shadow ease-in duration-300">
+                    <div className="flex justify-between items-start mb-2 ">
                       <h3 className="font-medium text-gray-900">{content.title}</h3>
                       <span className={`px-2 py-1 text-xs rounded-full ${
                         content.type === 'PDF' ? 'bg-red-100 text-red-800' : 'bg-blue-100 text-blue-800'

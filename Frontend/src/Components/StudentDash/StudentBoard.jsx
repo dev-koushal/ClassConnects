@@ -6,6 +6,7 @@ import CompactContent from './subcomps/CompactContent';
 import discussions from './DummyData/discussions'
 import MiddleColumn from './subcomps/MiddleColumn';
 import DownloadedContent from './subcomps/DownloadedContent';
+import StudentSidebar from './subcomps/StudentSidebar'
 const DiscussionPopUp = lazy(() => import('./subcomps/DiscussionPopUp'));
 import BannerImage from './assets/bannerpng.png';
 
@@ -43,7 +44,14 @@ const StudentBoard = () => {
       <div className="max-w-full col-span-2  mx-auto">
         {/* Header */}
         <div className="grid grid-cols-1 lg:grid-cols-6 gap-6">
-          <div className='lg:row-span-3 col-span-1 max-h-full  hidden md:block bg-blue-900 rounded-4xl'></div>
+          
+          
+          {/* SIdebar */}
+          <div className='lg:row-span-3 col-span-1 max-h-full  hidden lg:block bg-blue-900 rounded-4xl'>
+            <StudentSidebar />
+          </div>
+          
+          
            <div className="mb-8 md:col-span-5">
          <div className='flex overflow-hidden justify-between items-center bg-clip-padding backdrop-filter  backdrop-blur bg-opacity-10 backdrop-saturate-100 backdrop-contrast-100  rounded-4xl p-4 md:p-20 border-gray-500 
          bg-blue-900 '>
@@ -56,16 +64,16 @@ const StudentBoard = () => {
         </div>
          
           {/* Left Column - Scheduled Classes */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-3 ">
             <div className="relative bg-white border-2 border-blue-700 rounded-4xl shadow-[1px_1px_25px_1px_gray] overflow-auto" style={ {maxHeight:`${sizeSchedule}px`} }>
-              <div className="flex items-center mb-4 bg-white sticky h-20 top-0 shadow-lg ">
+              <div className="flex  items-center mb-4 bg-white sticky h-20 top-0 shadow-lg z-10 ">
                 <Calendar className="w-5 h-5 text-blue-600 mr-2 ml-6" />
                 <h2 onClick={()=>setSize()} className="text-xl font-semibold text-gray-900 rounded-full p-2 border-gray-500 bg-blue-900/40 cursor-pointer hover:bg-blue-900/70 ">Scheduled Classes</h2>
               </div>
               
               <div className="space-y-4 p-6">
                 {scheduledClasses.map((classItem) => (
-                  <div key={classItem.id} className="border rounded-lg p-4 hover:shadow-md transition-shadow">
+                  <div key={classItem.id} className="border rounded-lg p-4 hover:shadow-xl shadow-black/40 hover:scale-[1.01] transition-shadow ease-in duration-300">
                     <div className="flex justify-between items-start mb-2">
                       <h3 className="font-medium text-gray-900">{classItem.topic}</h3>
                       <span className={` py-1 text-xs rounded-full border ${getStatusColor(classItem.status)}`}>
@@ -95,7 +103,7 @@ const StudentBoard = () => {
 
           {/* Right Column - Discussion Section */}
           <div className="lg:col-span-5">
-            <div className="bg-white rounded-4xl overflow-hidden shadow-[1px_1px_25px_1px_gray] border-2 border-blue-700">
+            <div className="bg-white rounded-4xl overflow-hidden shadow-[1px_1px_25px_1px_gray] border-2 border-blue-700 ">
               <div className="flex items-center justify-between bg-white h-20 sticky top-0 shadow-lg">
                 <div className="flex items-center ">
                   <MessageCircle className="w-5 h-5 text-blue-600 mr-2 ml-6" />
@@ -104,11 +112,11 @@ const StudentBoard = () => {
               </div>
               
               {/* Compact Discussion View */}
-              <div className="space-y-3 max-h-64  p-6 overflow-y-auto">
+              <div className="space-y-3 max-h-64  p-6 overflow-y-auto ">
                 {discussions.slice(0, 4).map((discussion) => (
                   <div key={discussion.id} className="border-b pb-3 last:border-b-0">
-                    <div className="flex items-start gap-4">
-                     <div className="w-8 h-8 bg-gray-300 rounded-full overflow-hidden flex items-center justify-center">
+                    <div className="flex items-start gap-4 hover:shadow-xl shadow-black/40 hover:scale-[1.01] transition-shadow ease-in duration-300 hover:rounded-2xl">
+                     <div className="w-8 h-8 bg-gray-300 rounded-full overflow-hidden flex items-center justify-center ">
                         {discussion?.image && <img src={discussion.image} alt="modiji" />}
                         <Mars size={36} strokeWidth={1.75} />
                     </div>

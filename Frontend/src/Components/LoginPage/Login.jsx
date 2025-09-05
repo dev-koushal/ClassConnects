@@ -1,4 +1,5 @@
 import React, { lazy, Suspense } from 'react'
+import { Link } from 'react-router';
 import NavBarLogin from './NavBarLogin'
 import BannerImage from './assets/BannerImage.avif'
 import {motion} from 'motion/react'
@@ -33,8 +34,8 @@ function Login() {
         <button onClick={()=>SetPopup(!popup)} className=" px-6 py-2 rounded-md bg-purple-600 text-white shadow hover:bg-purple-700 transition hover:scale-95 cursor-pointer  duration-200 ease-in-out">
           Join as a student
         </button>
-        <button onClick={()=>SetPopup(!popup)}  className="px-6 py-2 rounded-md border border-gray-300 text-gray-700 hover:bg-gray-100 transition duration-200 ease-in-out hover:scale-95 cursor-pointer">
-          Join as a teacher
+        <button className="px-6 py-2 rounded-md border border-gray-300 text-gray-700 hover:bg-gray-100 transition duration-200 ease-in-out hover:scale-95 cursor-pointer">
+          <Link to='/teacherdashboard' >Join as a teacher</Link>
         </button>
 
       </div>
