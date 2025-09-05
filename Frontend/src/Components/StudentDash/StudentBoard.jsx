@@ -7,11 +7,20 @@ import discussions from './DummyData/discussions'
 import MiddleColumn from './subcomps/MiddleColumn';
 import DownloadedContent from './subcomps/DownloadedContent';
 const DiscussionPopUp = lazy(() => import('./subcomps/DiscussionPopUp'));
+import BannerImage from './assets/bannerpng.png';
+
+
 const StudentBoard = () => {
   const [isDiscussionOpen, setIsDiscussionOpen] = useState(false);
+  const [sizeSchedule,setSizeSchedule] = useState("400");
  
-
-  
+   const setSize = ()=>{
+    if(sizeSchedule == "300"){
+       setSizeSchedule("600");
+    }else{
+      setSizeSchedule("300");
+    }
+   }
   const getStatusColor = (status) => {
     switch (status) {
       case 'live': return 'px-6 bg-red-100 text-red-800 border-red-200';
@@ -24,33 +33,34 @@ const StudentBoard = () => {
 
 
   return (
-    <div className="min-h-screen bg-(--Secondary) p-4 ">
+    <div className="min-h-screen bg-white p-4 ">
         <div>
             <Link to="/" className="text-(--primary) text-lg hover:underline flex items-center gap-2 mb-4">
                 <ArrowLeft className="w-5 h-5" />
                 Back to Home
             </Link>
         </div>
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-full col-span-2  mx-auto">
         {/* Header */}
-        <div className="mb-8">
-         <div className='flex justify-between items-center bg-clip-padding backdrop-filter  backdrop-blur bg-opacity-10 backdrop-saturate-100 backdrop-contrast-100  rounded-full p-2 border-gray-500 
-        bg-[#80808030] bg-gradient-to-t from-black/40 to-gray-900/40 '>
-           <h1 className="text-3xl font-bold  text-gray-900 font-mono ">Student Dashboard  </h1>
-        <div className='w-12 h-12 rounded-full bg-gray-950 text-white'></div>
+        <div className="grid grid-cols-1 lg:grid-cols-6 gap-6">
+          <div className='lg:row-span-3 col-span-1 max-h-full  hidden md:block bg-blue-900 rounded-4xl'></div>
+           <div className="mb-8 md:col-span-5">
+         <div className='flex overflow-hidden justify-between items-center bg-clip-padding backdrop-filter  backdrop-blur bg-opacity-10 backdrop-saturate-100 backdrop-contrast-100  rounded-4xl p-4 md:p-20 border-gray-500 
+         bg-blue-900 '>
+           <div className='flex flex-col'>
+            <h1 className="text-3xl font-bold  text-white font-mono ">Student Dashboard  </h1>
+           <p className="text-white/60 mt-2 block">Welcome back! Here's what's happening today.</p>
+           </div>
+        <div className=' max-w-80 max-h-30 -mt-28 hidden md:block'> <img src={BannerImage} alt="bannerImage" /></div>
          </div>
-          <p className="text-gray-600 mt-2 ">Welcome back! Here's what's happening today.</p>
-          
         </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+         
           {/* Left Column - Scheduled Classes */}
-          <div className="lg:col-span-1">
-            <div className="bg-white rounded-lg shadow-2xl shadow-black overflow-auto" style={{ maxHeight: '600px' }}>
+          <div className="lg:col-span-3">
+            <div className="relative bg-white border-2 border-blue-700 rounded-4xl shadow-[1px_1px_25px_1px_gray] overflow-auto" style={ {maxHeight:`${sizeSchedule}px`} }>
               <div className="flex items-center mb-4 bg-white sticky h-20 top-0 shadow-lg ">
                 <Calendar className="w-5 h-5 text-blue-600 mr-2 ml-6" />
-                <h2 className="text-xl font-semibold text-gray-900  bg-clip-padding backdrop-filter  backdrop-blur bg-opacity-10 backdrop-saturate-100 backdrop-contrast-100  rounded-full p-2 border-gray-500 
-        bg-[#80808030]  ">Scheduled Classes</h2>
+                <h2 onClick={()=>setSize()} className="text-xl font-semibold text-gray-900 rounded-full p-2 border-gray-500 bg-blue-900/40 cursor-pointer hover:bg-blue-900/70 ">Scheduled Classes</h2>
               </div>
               
               <div className="space-y-4 p-6">
@@ -77,20 +87,19 @@ const StudentBoard = () => {
           </div>
 
           {/* Middle Column - Uploaded Content */}
-          <div className="lg:col-span-1">
-           <MiddleColumn />
+          <div className="lg:col-span-2">
+           <MiddleColumn setSize={sizeSchedule} setSizeSchedule={setSizeSchedule} />
           </div>
           {/* compact uploaded section for phones */}
           <CompactContent />
 
           {/* Right Column - Discussion Section */}
-          <div className="lg:col-span-2">
-            <div className="bg-white rounded-lg shadow-2xl shadow-black">
-              <div className="flex items-center justify-between mb-4  bg-white h-20 sticky top-0 shadow-lg">
+          <div className="lg:col-span-5">
+            <div className="bg-white rounded-4xl overflow-hidden shadow-[1px_1px_25px_1px_gray] border-2 border-blue-700">
+              <div className="flex items-center justify-between bg-white h-20 sticky top-0 shadow-lg">
                 <div className="flex items-center ">
-                  <MessageCircle className="w-5 h-5 text-purple-600 mr-2 ml-6" />
-                  <h2 className="text-xl font-semibold text-gray-900  bg-clip-padding backdrop-filter  backdrop-blur bg-opacity-10 backdrop-saturate-100 backdrop-contrast-100  rounded-full p-2 border-gray-500 
-        bg-[#80808030] ">Discussion</h2>
+                  <MessageCircle className="w-5 h-5 text-blue-600 mr-2 ml-6" />
+                  <h2 className="text-xl font-semibold text-gray-900 bg-blue-900/40 cursor-pointer hover:bg-blue-900/70  rounded-full p-2 px-4  ">Discussion</h2>
                 </div>
               </div>
               
@@ -117,15 +126,11 @@ const StudentBoard = () => {
               
               <button
                 onClick={() => setIsDiscussionOpen(true)}
-                className="w-full shadow-[0_-2px_5px_0_gray] mt-4 rounded-full bg-purple-200 p-2 text-purple-600 hover:text-purple-800 text-sm font-medium"
+                className="w-full shadow-[0_-2px_5px_0_gray] mt-4 rounded-full bg-blue-200 p-2 text-blue-600 hover:text-blue-800 text-sm font-medium"
               >
                 View all discussions →
               </button>
             </div>
-          </div>
-          {/* downloaded content page */}
-          <div>
-            <DownloadedContent />
           </div>
         </div>
       </div>
@@ -136,3 +141,4 @@ const StudentBoard = () => {
 };
 
 export default StudentBoard ;
+

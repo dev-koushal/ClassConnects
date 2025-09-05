@@ -2,15 +2,17 @@ import { Mars, Send, Users, X } from 'lucide-react'
 import React from 'react'
 import discussions from '../DummyData/discussions'
 function DiscussionPopUp({setIsDiscussionOpen, discussions}) {
+
+
   return (
     <div>
-        <div className="fixed inset-0 bg-black/50 bg-opacity-50 flex items-center justify-center p-4 z-50">
+        <div className="fixed inset-0 bg-black/70 bg-opacity-50 flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-lg w-full max-w-4xl h-5/6 flex flex-col">
             
             {/* Header */}
             <div className="flex items-center justify-between p-6 border-b">
               <div className="flex items-center">
-                <Users className="w-6 h-6 text-purple-600 mr-2" />
+                <Users className="w-6 h-6 text-blue-600 mr-2" />
                 <h2 className="text-2xl font-semibold text-gray-900">Class Discussion</h2>
               </div>
               <button
@@ -37,7 +39,7 @@ function DiscussionPopUp({setIsDiscussionOpen, discussions}) {
                         </div>
                         <p className="text-gray-700 mb-2">{discussion.message}</p>
                         <div className="flex items-center space-x-4 text-sm text-gray-500">
-                          <button className="hover:text-purple-600 transition-colors">
+                          <button className="hover:text-blue-600 transition-colors">
                             Reply to this mf
                           </button>
                         </div>
@@ -54,10 +56,10 @@ function DiscussionPopUp({setIsDiscussionOpen, discussions}) {
                 <input
                   type="text"
                   placeholder="Type your message..."
-                  className="flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className="flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
                 <button
-                  className="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition-colors flex items-center"
+                  className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center"
                 >
                   <Send className="w-4 h-4 mr-2" />
                   Send

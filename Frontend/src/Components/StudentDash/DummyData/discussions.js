@@ -3,6 +3,7 @@ const discussions = [
       id: 1,
       user: "Koushal Kumar",
       message: "Aur trump kaha hai? lode india se kya problem hai?",
+      time: "1:30",
     },
     {
       id: 2,

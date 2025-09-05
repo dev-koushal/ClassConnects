@@ -1,13 +1,20 @@
 import React from 'react'
 import { FileText, HatGlasses, HardDriveDownload } from 'lucide-react';
 import uploadedContent from '../DummyData/uploadedContent'
-function MiddleColumn() {
+function MiddleColumn({setSize,setSizeSchedule}) {
+
+  const discussionSize = ()=>{
+    if(setSize=="300"){
+      setSizeSchedule("600");
+    }else{
+      setSizeSchedule("300");
+    }
+  }
   return (
-    <div className="md:block hidden bg-white rounded-lg shadow-2xl shadow-black overflow-y-auto" style={{ maxHeight: '600px' }}>
+    <div className="md:block hidden bg-white border-2 border-blue-700 rounded-4xl shadow-[1px_1px_25px_1px_gray] overflow-y-auto" style={{maxHeight:`${setSize}px`}}>
               <div className="flex items-center mb-4 bg-white h-20 sticky top-0 shadow-lg">
                 <FileText className="w-5 h-5 text-green-600 mr-2 ml-6" />
-                <h2 className="text-xl font-semibold text-gray-900  bg-clip-padding backdrop-filter  backdrop-blur bg-opacity-10 backdrop-saturate-100 backdrop-contrast-100 p-2  rounded-full border-gray-500 
-        bg-[#80808030] ">Uploaded Content</h2>
+                <h2 className="text-xl font-semibold text-gray-900 bg-blue-900/40 cursor-pointer hover:bg-blue-900/70 p-2 rounded-full " onClick={()=>discussionSize()}>Uploaded Content</h2>
               </div>
               
               <div className="space-y-4  p-6 ">
@@ -31,7 +38,7 @@ function MiddleColumn() {
                           <button className="p-1 text-gray-500 hover:text-green-600 transition-colors">
                            <HardDriveDownload size={36} strokeWidth={1.75} />
                           </button>
-                          <p>View pdf</p>
+                          <p>Download</p>
                         </div>
                       </div>
                     </div>
