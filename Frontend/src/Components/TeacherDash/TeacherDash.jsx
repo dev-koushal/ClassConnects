@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {Link} from 'react-router';
 import { 
   User, 
   BarChart3, 
@@ -11,8 +12,11 @@ import {
   Play,
   Upload,
   FileText,
-  Plus
+  Plus,
+  ArrowLeft
 } from 'lucide-react';
+
+
 
 // Sidebar Component
 const Sidebar = () => {
@@ -20,13 +24,19 @@ const Sidebar = () => {
     { icon: User, label: 'Profile', active: false },
     { icon: BarChart3, label: 'Analytics', active: false },
     { icon: Users, label: 'Attendance', active: false },
-    { icon: Calendar, label: 'Schedule', active: true },
+    { icon: Calendar, label: 'Schedule', active: false },
     { icon: BookOpen, label: 'Courses', active: false },
     { icon: Settings, label: 'Settings', active: false }
   ];
 
   return (
     <div className="w-64 hidden md:block bg-gradient-to-b from-blue-600 to-blue-700 h-screen fixed left-0 top-0 shadow-xl z-50">
+      <div>
+            <Link to="/" className="text-(--primary) text-lg hover:underline flex items-center gap-2 mb-4">
+                <ArrowLeft className="w-5 h-5" />
+                Back to Home
+            </Link>
+        </div>
       <div className="p-6 border-b border-blue-500/20">
         <h2 className="text-white text-2xl font-bold text-center">TeacherHub</h2>
       </div>
@@ -55,11 +65,11 @@ const Sidebar = () => {
 // Top Bar Component
 const TopBar = () => {
   return (
-    <div className="bg-white/80 backdrop-blur-sm border-b border-blue-100 px-8 py-4 ml-0 md:md:ml-64 ml-0">
+    <div className="bg-white/80 backdrop-blur-sm border-b border-blue-100 px-8 py-4 ml-0 md:md:ml-64">
       <div className="flex justify-between items-center">
         <div>
           <h1 className="text-2xl font-bold text-gray-800">Dashboard</h1>
-          <p className="text-gray-600">Welcome back, Professor Smith</p>
+          <p className="text-gray-600">Welcome back, Professor </p>
         </div>
         <div className="flex items-center space-x-4">
           <button className="relative p-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-full transition-all duration-200">
