@@ -13,8 +13,10 @@ function Login() {
   return (
     <>  
     
-       <div className='min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 '>
-         <nav className='min-w-full fixed'><NavBarLogin /></nav>
+       <div className='min-h-screen bg-gradient-to-br from-slate-100 via-blue-50 to-indigo-200 relative'>
+        
+
+        <nav className='min-w-full fixed'><NavBarLogin /></nav>
         <div id='home' className='min-h-screen flex items-center justify-between flex-wrap md:flex-wrap lg:flex-nowrap'>
     <div className="flex  flex-col items-center justify-center text-center mt-30 lg:mt-0 px-6 py-10 space-y-6">
       {/* Heading */}
@@ -32,10 +34,10 @@ function Login() {
 
       {/* Logins (need to be fetched) */}
       <motion.div  initial={{x:-200,opacity:0}} animate={{x:0,opacity:1}} transition={{duration:0.5,delay:1.5}}  className="flex gap-4">
-        <button onClick={()=>SetPopup(!popup)} className=" px-6 py-2 rounded-md bg-purple-600 text-white shadow hover:bg-purple-700 transition hover:scale-95 cursor-pointer  duration-200 ease-in-out">
+        <button onClick={()=>SetPopup(!popup)} className=" px-6 py-2 rounded-md bg-blue-600 text-white shadow hover:bg-purple-700 transition hover:scale-95 cursor-pointer  duration-200 ease-in-out">
           Join as a student
         </button>
-        <button className="px-6 py-2 rounded-md border border-gray-300 text-gray-700 hover:bg-gray-100 transition duration-200 ease-in-out hover:scale-95 cursor-pointer">
+        <button className="px-6 py-2 rounded-md border border-orange-800 hover:bg-orange-500/60 text-gray-700  transition duration-200 ease-in-out hover:scale-95 cursor-pointer">
           <Link to='/teacherdashboard' >Join as a teacher</Link>
         </button>
 
